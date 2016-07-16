@@ -1,0 +1,2 @@
+atmo==0.0.1b1.dev1
+Django==1.9.7
