@@ -4,13 +4,14 @@ from atmogwada.models import IndiceAtmo
 from atmo.atmo import Atmo
 
 class Command(BaseCommand):
-    help = 'Retrieves indice atmo and forecast and store it in the database '
-    'if data changed since last record.'
+    u"""Retrieves indice atmo and forecast and store it in the database '
+    'if data changed since last record."""
 
-    # def add_arguments(self, parser):
-    #     parser.add_argument('poll_id', nargs='+', type=int)
+    help = 'Records last indice ATMO.'
 
-    def handle(self, *args, **options):
+    def handle(self):
+        u"""Retrieves indice ATMO, compares it with last record and, if data
+        changed, stores it in the database."""
 
         ia = Atmo()
         current_atmo = IndiceAtmo(config_date=ia.indiceatmo['config_date'],
