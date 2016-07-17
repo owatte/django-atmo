@@ -17,7 +17,7 @@ class IndiceAtmo(models.Model):
     - today and tomorrow can be blank in case of missing data.
     - config_date and date_today are both stored, to be able to process a date
     checking and maybe to determine the UTC parameter or report rolling time.
-    These data are store as sting to prevent some error because of time settings
+    These data are store as string to prevent some error because of time settings
     on the local machine.
     - date_tomorrow is not stored.
     - a record_date field is added to store the indice atmo datetime
