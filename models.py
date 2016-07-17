@@ -57,12 +57,12 @@ class Station(models.Model):
     network = models.CharField(max_length=30)
     ident = models.CharField(max_length=10, blank=False, unique=True)
     label = models.CharField(max_length=30)
-    date_start = models.DateTimeField(blank=False)
-    date_stop = models.DateTimeField(null=True)
+    date_start = models.CharField(max_length=35, null=True)
+    date_stop = models.CharField(max_length=35, null=True)
     lat = models.DecimalField(max_digits=9, decimal_places=6, blank=False)
     lng = models.DecimalField(max_digits=9, decimal_places=6, blank=False)
     alt = models.PositiveSmallIntegerField(blank=False)
-    last_update = models.DateTimeField(null=True)
+    last_update = models.CharField(max_length=35, null=True)
     record_date = models.DateTimeField(auto_now_add=True)
 
     def ident(self):
@@ -71,7 +71,7 @@ class Station(models.Model):
     def __str__(self):
         return '[{0}] {1}'.format(self.ident, self.isit)
 
-class Params(models.Model):
+class Param(models.Model):
     station = models.ForeignKey('Station', on_delete=models.CASCADE)
     # eg. "cchim": "dioxyde de soufre"
     cchim = models.CharField(max_length=35)
@@ -82,5 +82,5 @@ class Params(models.Model):
     # eg. "cmet": "A" found only A S 1 or ""
     cmet = models.CharField(max_length=5)
     # eg  "last_value": null or "last_value": "23-06-2011 07:45:00"
-    last_value = models.DateTimeField()
+    last_value = models.CharField(max_length=35, null=True)
     record_date = models.DateTimeField(auto_now_add=True)
