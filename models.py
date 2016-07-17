@@ -17,15 +17,15 @@ class IndiceAtmo(models.Model):
     - today and tomorrow can be blank in case of missing data.
     - config_date and date_today are both stored, to be able to process a date
     checking and maybe to determine the UTC parameter or report rolling time.
-    These data are store as string to prevent some error because of time settings
-    on the local machine.
+    These data are store as string to prevent some error because of time
+    settings on the local machine.
     - date_tomorrow is not stored.
     - a record_date field is added to store the indice atmo datetime
     """
 
     INDICE_CHOICES = zip(range(1, 10), range(1, 10))
     config_date = models.CharField(blank=False, max_length=10)
-    date_today = models.CharField(blank=False,  max_length=10)
+    date_today = models.CharField(blank=False, max_length=10)
     today = models.PositiveSmallIntegerField(
         choices=INDICE_CHOICES, blank=True
     )
@@ -33,6 +33,11 @@ class IndiceAtmo(models.Model):
         choices=INDICE_CHOICES, blank=True
     )
     record_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '[{0}] {1}'.format(
+            str(self.today), self.record_date.strftime("%A %d %B %Y")
+        )
 
     class Meta:
         ordering = ['-record_date']
