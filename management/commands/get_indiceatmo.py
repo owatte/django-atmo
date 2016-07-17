@@ -19,7 +19,9 @@ class Command(BaseCommand):
                                   tomorrow=int(ia.indiceatmo['tomorrow']),
                                   today=int(ia.indiceatmo['today']))
         last_atmo = IndiceAtmo.objects.last()
-        if last_atmo is not None:
+        if last_atmo is None:
+            current_atmo.save()
+        else:
             if current_atmo.config_date != last_atmo.config_date \
                     or current_atmo.date_today != last_atmo.date_today \
                     or current_atmo.tomorrow != last_atmo.tomorrow \
