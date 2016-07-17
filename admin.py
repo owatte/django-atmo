@@ -7,6 +7,7 @@ class IndiceAtmoAdmin(admin.ModelAdmin):
 
     date_hierarchy = 'record_date'
     readonly_fields = []
+    fields = ('today', 'tomorrow', 'date_today', 'config_date')
 
     def get_actions(self, request):
         u"""delete "action delete" from IndiceAtmo Admin."""
