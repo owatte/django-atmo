@@ -33,3 +33,8 @@ class IndiceAtmo(models.Model):
         choices=INDICE_CHOICES, blank=True
     )
     record_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-record_date']
+        verbose_name = 'indice ATMO'
+        verbose_name_plural = 'indices ATMO'

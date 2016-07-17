@@ -4,8 +4,8 @@ from atmogwada.models import IndiceAtmo
 from atmo.atmo import Atmo
 
 class Command(BaseCommand):
-    u"""Retrieves indice atmo and forecast and store it in the database '
-    'if data changed since last record."""
+    u"""Retrieves indice atmo and forecast and store it in the database
+    if data changed since last record."""
 
     help = 'Records last indice ATMO.'
 
